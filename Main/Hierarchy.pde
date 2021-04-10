@@ -11,6 +11,10 @@ abstract class Hierarchy<T> {
   abstract ArrayList<T> value();
 }
 
+/* Tree Class
+*
+*  This class simulates a tree with branches inside
+*/
 class Tree extends Hierarchy<Branch> {
   private int seed = 0;
   private ArrayList<Branch> value = new ArrayList<Branch>();
@@ -30,6 +34,10 @@ class Tree extends Hierarchy<Branch> {
   
 }
 
+/* Branch Class
+*
+*  This class simulates a branch
+*/
 class Branch extends Hierarchy<Integer>{
   private int seed = 0;
   private ArrayList<Integer> value = new ArrayList<Integer>();
@@ -57,6 +65,10 @@ class Branch extends Hierarchy<Integer>{
   }
 }
 
+/* Colour Class
+*
+*  This class is an rgb object
+*/
 class Colour {
   int r,g,b;
   Colour(int r, int g, int b) {
