@@ -31,7 +31,6 @@ class Tree extends Hierarchy<Branch> {
   ArrayList<Branch> value() {
     return this.value;
   }
-  
 }
 
 /* Branch Class
@@ -41,14 +40,17 @@ class Tree extends Hierarchy<Branch> {
 class Branch extends Hierarchy<Integer>{
   private int seed = 0;
   private ArrayList<Integer> value = new ArrayList<Integer>();
-  public Colour colour = new Colour(126,52,250);
+  public Colour colour = new Colour( 2.0, 8.0, 2.0 );
+  
   public float angle = PI/32;
   
   void set(Integer val) {
     this.seed++;
-    colour.r = this.rand(40);
-    colour.g = this.rand(140);
-    colour.b = this.rand(255);
+/*
+    colour.r = this.rand(colour.r);
+    colour.g = this.rand(colour.g);
+    colour.b = this.rand(colour.b);
+*/
     this.value.add(val);
   }
   
@@ -59,10 +61,7 @@ class Branch extends Hierarchy<Integer>{
   ArrayList<Integer> value() {
     return this.value;
   }
-  
-  int rand(int max) {
-    return (int)(Math.random() * max) + 1;
-  }
+ 
 }
 
 /* Colour Class
@@ -71,9 +70,20 @@ class Branch extends Hierarchy<Integer>{
 */
 class Colour {
   int r,g,b;
-  Colour(int r, int g, int b) {
-    this.r = r;
-    this.g = g;
-    this.b = b;
+  
+  Colour(float _r, float _g, float _b) {
+    this.r = this.frac(_r);
+    this.g = this.frac(_g);
+    this.b = this.frac(_b);
   }
+  
+  private int frac(float num) {
+    float val = 255 * (1.0/num);
+    return this.rand((int) val);
+  }
+  
+  private int rand(int max) {
+    return (int)(Math.random() * max) + 1;
+  }
+   
 }

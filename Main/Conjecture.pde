@@ -7,7 +7,7 @@
 */
 class Conjecture {
   Collatz conjecture = new Collatz();
-  int count = 1000;
+  int count = 200;
   int shape = 32;
   
   Conjecture(int count) {
@@ -31,7 +31,7 @@ class Conjecture {
       this.conjecture.calc(this.count);
       this.count--;
     } while (this.count > 1);
-    println("Finished feeding Collatz");
+    println("Finished feeding Collatz Tree");
   }
   
   /* void run()
@@ -61,20 +61,21 @@ class Conjecture {
         // Gets the value of each Collatz iteration
         Integer val = (int) map(branch.value().get(j), 1, range * 1/8, 0, height );
         
+        // Gets the branch color.
+        Colour c = branch.colour;
+        
         // Need to do this to change tha angle of the canvas.
         // It uses the same Collatz Algorith to determine
         // what is the next rotation angle to draw.
         if(val % 2 == 0) {
-          rotate(PI/branch.rand(shape));
+          rotate(PI/c.rand(shape));
         } else {
-          rotate(-PI/branch.rand(shape));
+          rotate(-PI/c.rand(shape));
         }
-        
-        // Gets the branch color.
-        Colour c = branch.colour;
         
         // Updates the color of the stroke and draw lines over the canvas.
         stroke(c.r, c.g, c.b, 60);
+        //stroke(255, 60);
         line(0,0,0, -val);
         
         // This change the drawing position to the last value of the line.
@@ -84,5 +85,4 @@ class Conjecture {
       }
     }
   }
-  
 }

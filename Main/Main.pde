@@ -7,7 +7,7 @@ void setup() {
   translate(width/2, height/2);
   background(0);
   // Instance of Conjecture
-  Conjecture collatz = new Conjecture(400);
+  Conjecture collatz = new Conjecture(4000);
   collatz.run();
   
   endRecord();
