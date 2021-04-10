@@ -64,9 +64,9 @@ class Conjecture {
         // Gets the branch color.
         Colour c = branch.colour;
         
-        // Need to do this to change tha angle of the canvas.
-        // It uses the same Collatz Algorith to determine
-        // what is the next rotation angle to draw.
+        // Changes the angle of the canvas.
+        // It uses the same Collatz Algorithm validation
+        // to determine what is the next rotation angle to draw.
         if(val % 2 == 0) {
           rotate(PI/c.rand(shape));
         } else {
@@ -75,7 +75,8 @@ class Conjecture {
         
         // Updates the color of the stroke and draw lines over the canvas.
         stroke(c.r, c.g, c.b, 60);
-        //stroke(255, 60);
+
+        // It draws a line with the length of the current branch value
         line(0,0,0, -val);
         
         // This change the drawing position to the last value of the line.
